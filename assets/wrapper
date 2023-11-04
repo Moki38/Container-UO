@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+function sigterm_handler() {
+    echo "SIGTERM signal received, try to gracefully shutdown all services..."
+#    gitlab-ctl stop
+}
+
+trap "sigterm_handler; exit" TERM
+
+source /RELEASE
+echo "Thank you for using ModernUO Container Image!"
+echo "Current version: $RELEASE_PACKAGE=$RELEASE_VERSION"
+echo ""
+
+./ModernUO
+
+# Wait for SIGTERM
+wait

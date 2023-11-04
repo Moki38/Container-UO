@@ -34,9 +34,6 @@ RUN git clone https://github.com/modernuo/ModernUO.git
 #
 RUN cd ModernUO ; ./publish.sh release linux arm64
 
-# Set locale
-RUN locale-gen --purge en_US.UTF-8
-
 # Expose 2593
 EXPOSE 2593
 
